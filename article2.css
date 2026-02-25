@@ -1,130 +1,195 @@
-/* Premium Navigation Bar */
+/* Google Fonts Integration */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@500;700&display=swap');
+
+:root {
+    --primary-color: #2563eb; /* Professional Blue */
+    --secondary-color: #1e293b; /* Dark Slate */
+    --accent-color: #f59e0b; /* Gold/Amber */
+    --text-color: #334155;
+    --bg-light: #f8fafc;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-light);
+}
+
+/* --- Header & Navbar --- */
 header {
-    background-color: rgba(255, 255, 255, 0.95); /* White with slight transparency */
-    padding: 15px 0;
-    position: sticky; /* Menu upar hi rahay ga scroll karne par */
+    background: var(--white);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
+
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 85%;
-    margin: auto;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
 }
 
 .logo {
-    font-size: 26px;
-    font-weight: 800;
-    color: #2c3e50;
-    letter-spacing: -1px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--secondary-color);
 }
 
 .logo span {
-    color: #e67e22; /* Matching with hero button */
+    color: var(--primary-color);
 }
 
 .nav-links {
-    list-style: none;
     display: flex;
-    gap: 30px;
+    list-style: none;
+    gap: 2rem;
 }
 
-.nav-links li a {
+.nav-links a {
     text-decoration: none;
-    color: #34495e;
-    font-weight: 600;
-    font-size: 16px;
+    color: var(--text-color);
+    font-weight: 500;
     transition: color 0.3s;
 }
 
-.nav-links li a:hover, .nav-links li a.active {
-    color: #e67e22;
+.nav-links a:hover, .nav-links a.active {
+    color: var(--primary-color);
 }
 
-/* Chota Button Navigation mein */
 .btn-small {
-    background-color: #2c3e50;
-    color: white;
-    padding: 10px 20px;
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
     text-decoration: none;
-    border-radius: 5px;
-    font-size: 14px;
-    font-weight: bold;
-    transition: background 0.3s;
+    font-size: 0.9rem;
+    transition: opacity 0.3s;
 }
 
 .btn-small:hover {
-    background-color: #34495e;
-}
-/* Article Page Styles */
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f8f9fa;
-    margin: 0;
-    line-height: 1.6;
+    opacity: 0.9;
 }
 
+/* --- Main Content Area --- */
 main {
     max-width: 800px;
-    margin: 50px auto;
-    background: white;
-    padding: 40px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+    background: var(--white);
+    padding: 3rem;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
 }
 
-h1 { color: #2c3e50; font-size: 32px; margin-bottom: 20px; }
-h2, h3 { color: #34495e; margin-top: 30px; }
-
-p { font-size: 18px; color: #444; margin-bottom: 20px; }
-
-/* Pros & Cons Styling */
-strong { color: #2c3e50; }
-
-.pros-box {
-    background-color: #e8f5e9;
-    border-left: 5px solid #2e7d32;
-    padding: 15px;
-    margin: 10px 0;
+h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
+    color: var(--secondary-color);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
 }
 
-.cons-box {
-    background-color: #ffebee;
-    border-left: 5px solid #c62828;
-    padding: 15px;
-    margin: 10px 0;
+h1 { font-size: 2.2rem; border-left: 5px solid var(--primary-color); padding-left: 15px; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.5rem; color: var(--primary-color); }
+
+p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: #475569;
 }
 
-/* Footer Styling */
+/* --- Images Styling --- */
+img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin: 1.5rem 0;
+    display: block;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+}
+
+/* --- Pros & Cons Styling --- */
+strong {
+    color: var(--secondary-color);
+}
+
+strong:contains("Pros:") {
+    color: #059669; /* Green */
+}
+
+strong:contains("Cons:") {
+    color: #dc2626; /* Red */
+}
+
+/* --- Footer --- */
 .main-footer {
-    background: #2c3e50;
-    color: white;
-    padding: 50px 0 20px 0;
-    margin-top: 50px;
+    background: var(--secondary-color);
+    color: var(--white);
+    padding: 4rem 2rem 1rem;
+    margin-top: 5rem;
 }
 
 .footer-content {
-    width: 85%;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
 }
 
-.footer-section { flex: 1; min-width: 250px; }
-.footer-links ul { list-style: none; padding: 0; }
-.footer-links a { color: #bdc3c7; text-decoration: none; }
-.footer-links a:hover { color: #e67e22; }
+.footer-section p {
+    color: #94a3b8;
+    margin-top: 1rem;
+}
+
+.footer-links h4 {
+    margin-bottom: 1.2rem;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--white);
+}
 
 .footer-bottom {
     text-align: center;
-    border-top: 1px solid #3e4f5f;
-    margin-top: 30px;
-    padding-top: 20px;
-    font-size: 14px;
-    color: #bdc3c7;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #334155;
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    main { padding: 1.5rem; margin: 1rem; }
+    h1 { font-size: 1.8rem; }
+    .footer-content { grid-template-columns: 1fr; gap: 2rem; }
 }
