@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | RemotePro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">Remote<span>Pro</span></div>
+        <ul class="nav-links" id="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="review.html">Reviews</a></li>
+            <li><a href="setup-guide.html">Setup Guide</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round">
+                    <span class="icon sun">☀️</span>
+                    <span class="icon moon">🌙</span>
+                </div>
+            </label>
+        </div>
+        <div class="nav-cta">
+            <a href="contact.html" class="btn-small active">Contact Us</a>
+        </div>
+    </nav>
+</header>
+
+<main class="container">
+    <section class="contact-section">
+        <div class="contact-info">
+            <h1>Get in Touch</h1>
+            <p>Have a question about a mechanical keyboard? Or want us to review your product? Drop us a message!</p>
+            
+            <div class="info-item">
+                <span>📍</span>
+                <p>Lahore, Pakistan (Remote HQ)</p>
+            </div>
+            <div class="info-item">
+                <span>📧</span>
+                <p>collab@remotepro.com</p>
+            </div>
+        </div>
+
+        <div class="contact-form-card">
+            <form id="contact-form">
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input type="text" id="name" placeholder="John Doe" required>
+                </div>
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <input type="email" id="email" placeholder="john@example.com" required>
+                </div>
+                <div class="input-group">
+                    <label>Subject</label>
+                    <select id="subject">
+                        <option>Product Review Request</option>
+                        <option>General Inquiry</option>
+                        <option>Feedback</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Message</label>
+                    <textarea id="message" rows="5" placeholder="How can we help you?" required></textarea>
+                </div>
+                <button type="submit" class="btn-hero" style="width: 100%;">Send Message</button>
+            </form>
+
+            <div id="success-alert" class="success-message" style="display: none;">
+                <span class="icon">✅</span>
+                <h2>Message Sent!</h2>
+                <p>Thank you for reaching out. The RemotePro team will contact you soon.</p>
+                <button onclick="location.reload()" class="btn-hero" style="margin-top:20px; padding:10px 20px;">Send Another</button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="footer-bottom">
+        <p>&copy; 2026 RemotePro | Built for Enthusiasts</p>
+    </div>
+</footer>
+
+<script>
+    // --- Dark Mode Logic ---
+    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        if (currentTheme === 'dark') toggleSwitch.checked = true;
+    }
+
+    toggleSwitch.addEventListener('change', (e) => {
+        const theme = e.target.checked ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+    });
+
+    // --- Form Submission Logic ---
+    const contactForm = document.getElementById('contact-form');
+    const successAlert = document.getElementById('success-alert');
+
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault(); // Stop page reload
+
+        // Hide form and show success message
+        contactForm.style.display = 'none';
+        successAlert.style.display = 'block';
+
+        console.log("Form Submitted Successfully!");
+    });
+</script>
+
+</body>
+</html>

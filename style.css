@@ -1,23 +1,23 @@
-/* --- 1. Global Reset --- */
+/* --- Global Styles --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
-
-html {
-    scroll-behavior: smooth;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-color: #f4f7f6;
+    background-color: #f8f9fa;
     color: #333;
     line-height: 1.6;
 }
 
-/* --- 2. Navigation Bar --- */
-header {
+/* --- Navigation --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
     background: #fff;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     position: sticky;
@@ -25,268 +25,584 @@ header {
     z-index: 1000;
 }
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 5%;
-    height: 80px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
 .logo {
-    font-size: 26px;
-    font-weight: 800;
-    color: #222;
-    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2d3436;
 }
 
-.logo span {
-    color: #007bff;
-}
+.logo span { color: #0984e3; }
 
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 30px;
 }
 
-.nav-links a {
+.nav-links li a {
     text-decoration: none;
-    color: #555;
+    color: #2d3436;
+    margin: 0 15px;
     font-weight: 500;
-    transition: 0.3s;
+    transition: color 0.3s;
 }
 
-.nav-links a:hover, .nav-links a.active {
-    color: #007bff;
+.nav-links li a:hover, .nav-links li a.active {
+    color: #0984e3;
 }
 
 .btn-small {
-    background: #007bff;
+    background: #0984e3;
     color: #fff;
-    padding: 8px 18px;
+    padding: 8px 20px;
     border-radius: 5px;
     text-decoration: none;
-    font-weight: 600;
-    font-size: 14px;
-    transition: 0.3s;
+    font-size: 0.9rem;
 }
 
-.btn-small:hover {
-    background: #0056b3;
-}
-
-/* --- 3. Hero Section --- */
+/* --- Hero Section --- */
 .hero {
+    height: 60vh;
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1200&q=80');
+                url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1350&q=80');
     background-size: cover;
     background-position: center;
-    height: 60vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: #fff;
+    color: white;
     padding: 0 20px;
 }
 
-.hero h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
-}
-
-.hero p {
-    font-size: 18px;
-    max-width: 600px;
-    margin-bottom: 30px;
-}
+.hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+.hero p { max-width: 700px; margin-bottom: 2rem; font-size: 1.1rem; }
 
 .btn-hero {
-    background: #007bff;
-    color: #fff;
-    padding: 15px 30px;
+    background: #0984e3;
+    color: white;
+    padding: 12px 30px;
     text-decoration: none;
-    border-radius: 50px;
+    border-radius: 5px;
     font-weight: bold;
-    transition: 0.3s;
+    transition: transform 0.3s;
 }
 
-.btn-hero:hover {
-    background: #fff;
-    color: #007bff;
-}
+.btn-hero:hover { transform: scale(1.05); }
 
-/* --- 4. Main Content (Grid) --- */
+/* --- Blog Grid & Cards --- */
 .container {
     max-width: 1200px;
-    margin: 60px auto;
+    margin: 50px auto;
     padding: 0 20px;
 }
 
 .container h2 {
-    margin-bottom: 40px;
-    font-size: 32px;
     text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
 }
 
+/* Articles ko align karne ke liye grid */
 .blog-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
 }
 
+/* Card Styling - Jahan pictures show hongi */
 .card {
     background: #fff;
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: translateY 0.3s;
     display: flex;
     flex-direction: column;
+    margin-bottom: 30px; /* Backup for older layouts */
 }
 
 .card:hover {
     transform: translateY(-10px);
 }
 
+.card-img {
+    width: 100%;
+    height: 220px; /* Fixed height for uniformity */
+    overflow: hidden;
+}
+
 .card-img img {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
+    height: 100%;
+    object-fit: cover; /* Is se picture stretch nahi hogi, perfectly crop hogi */
+    transition: transform 0.5s;
+}
+
+.card:hover .card-img img {
+    transform: scale(1.1);
 }
 
 .card h3 {
     padding: 20px 20px 10px;
-    font-size: 20px;
+    font-size: 1.3rem;
 }
 
 .card p {
     padding: 0 20px 20px;
-    color: #666;
-    font-size: 15px;
-    flex-grow: 1;
+    color: #636e72;
+    flex-grow: 1; /* Text kam ho ya zyada, card ka size barabar rahega */
 }
 
 .read-more {
+    display: inline-block;
     padding: 15px 20px;
-    color: #007bff;
+    color: #0984e3;
     text-decoration: none;
     font-weight: bold;
     border-top: 1px solid #eee;
 }
 
-/* --- 5. Footer --- */
+/* --- Footer --- */
 .footer {
-    background: #1a1a1a;
-    color: #fff;
-    padding: 60px 5% 20px;
-    margin-top: 80px;
+    background: #2d3436;
+    color: #dfe6e9;
+    padding: 50px 0 20px;
+    margin-top: 50px;
 }
 
 .footer-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 40px;
+    padding: 0 20px;
 }
 
-.footer-section {
-    flex: 1;
-    min-width: 250px;
-}
-
-.footer-logo span {
-    color: #007bff;
-}
+.footer-logo span { color: #0984e3; }
 
 .footer-section h3 {
     margin-bottom: 20px;
-    font-size: 18px;
+    color: #fff;
 }
 
-.footer-section ul {
-    list-style: none;
-}
-
-.footer-section ul li {
-    margin-bottom: 10px;
-}
-
-.footer-section a {
-    color: #bbb;
-    text-decoration: none;
-}
+.footer-section ul { list-style: none; }
+.footer-section ul li { margin-bottom: 10px; }
+.footer-section ul li a { color: #b2bec3; text-decoration: none; }
 
 .social-links a {
-    margin-right: 15px;
-    background: #333;
-    padding: 8px 12px;
-    border-radius: 5px;
-    font-size: 14px;
+    display: block;
+    color: #b2bec3;
+    text-decoration: none;
+    margin-bottom: 5px;
 }
 
 .footer-bottom {
     text-align: center;
-    border-top: 1px solid #333;
     margin-top: 40px;
     padding-top: 20px;
-    color: #777;
+    border-top: 1px solid #444;
 }
 
-/* --- 6. Hamburger Menu (Mobile) --- */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-}
-
-.bar {
-    width: 25px;
-    height: 3px;
-    background: #333;
-    border-radius: 2px;
-    transition: 0.3s;
-}
-
-/* --- 7. Responsive Media Queries --- */
+/* --- Mobile Responsive --- */
 @media (max-width: 768px) {
-    .hamburger {
-        display: flex;
-    }
-
     .nav-links {
-        display: none; /* JS will toggle this with .active class */
-        position: absolute;
-        top: 80px;
-        left: 0;
-        width: 100%;
-        background: #fff;
+        display: none; /* JS will handle this */
+    }
+    
+    .hero h1 { font-size: 2rem; }
+}
+/* --- Keyframes (Animations Definition) --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* --- Applying Animations --- */
+
+/* Hero text load hote hi animate hoga */
+.hero h1 {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.hero p {
+    animation: fadeInUp 1s ease-out;
+}
+
+/* Cards scroll par smooth reveal honge */
+.card {
+    animation: fadeInUp 0.6s ease-out both;
+    /* transition for hover */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Card Hover: Subtle lifting and shadow effect */
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.1);
+}
+
+/* Image Zoom on hover */
+.card:hover .card-img img {
+    transform: scale(1.1) rotate(1deg); /* Halki si rotation se dynamic lagta hai */
+}
+
+/* Smooth Scrolling for the whole page */
+html {
+    scroll-behavior: smooth;
+}
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.4s; }
+.card:nth-child(5) { animation-delay: 0.5s; }
+/* style.css mein card ki styling ko update karein */
+.card {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.7s ease-out; /* Smooth transition */
+}
+
+/* Jab JS 'show' class add karega tab ye trigger hoga */
+.card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* Modal Background */
+.newsletter-modal {
+    display: none; /* Shuru mein hide rahega */
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7); /* Background dhundla karne ke liye */
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s ease;
+}
+
+/* Modal box jab active ho */
+.newsletter-modal.open {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Modal Content Box */
+.modal-content {
+    background: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+    transform: scale(0.7);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.newsletter-modal.open .modal-content {
+    transform: scale(1); /* Popping effect */
+}
+
+.close-modal {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #333;
+}
+
+.modal-form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-form input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+/* Pehle se mojood colors ko variables mein badlein */
+:root {
+    --bg-color: #f8f9fa;
+    --card-bg: #ffffff;
+    --text-color: #333;
+    --heading-color: #2d3436;
+    --nav-bg: #ffffff;
+    --footer-bg: #2d3436;
+    --accent-color: #0984e3;
+}
+
+/* Dark Mode Colors */
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --text-color: #d1d1d1;
+    --heading-color: #ffffff;
+    --nav-bg: #1a1a1a;
+    --footer-bg: #000000;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.navbar { background: var(--nav-bg); }
+.card { background: var(--card-bg); color: var(--text-color); }
+.logo, h1, h2, h3 { color: var(--heading-color); }
+
+/* Toggle Switch Styling */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+.theme-switch {
+    display: inline-block;
+    height: 28px;
+    position: relative;
+    width: 50px;
+}
+.theme-switch input { display: none; }
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 5px;
+}
+.slider:before {
+    background-color: white;
+    bottom: 4px;
+    content: "";
+    height: 20px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 20px;
+    border-radius: 50%;
+    z-index: 2;
+}
+input:checked + .slider { background-color: var(--accent-color); }
+input:checked + .slider:before { transform: translateX(22px); }
+.slider .icon { font-size: 12px; user-select: none; }
+/* --- Root Variables (For Theme Support) --- */
+:root {
+    --accent-color: #0984e3;
+    --transition: all 0.3s ease;
+}
+
+/* --- Main Layout --- */
+.container {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 20px;
+}
+
+.contact-section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 50px;
+    animation: fadeIn 0.8s ease-in;
+}
+
+/* --- Left Side: Contact Info --- */
+.contact-info {
+    flex: 1;
+    min-width: 320px;
+}
+
+.contact-info h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #0984e3, #6c5ce7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.contact-info p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: var(--transition);
+}
+
+.info-item:hover {
+    transform: translateX(10px);
+    border-left: 5px solid var(--accent-color);
+}
+
+.social-links-contact {
+    margin-top: 30px;
+}
+
+.social-links-contact a {
+    text-decoration: none;
+    color: var(--accent-color);
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.social-links-contact a:hover {
+    color: var(--heading-color);
+}
+
+/* --- Right Side: Contact Form Card --- */
+.contact-form-card {
+    flex: 1.2;
+    min-width: 350px;
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.input-group input, 
+.input-group select, 
+.input-group textarea {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #e1e1e1;
+    border-radius: 12px;
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+/* Form Focus State */
+.input-group input:focus, 
+.input-group select:focus, 
+.input-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 4px rgba(9, 132, 227, 0.1);
+}
+
+/* Submit Button Animation */
+.btn-hero {
+    background: var(--accent-color);
+    color: white;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 8px 20px rgba(9, 132, 227, 0.3);
+}
+
+.btn-hero:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(9, 132, 227, 0.4);
+    filter: brightness(1.1);
+}
+
+/* --- Animations --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Responsive Fix --- */
+@media (max-width: 768px) {
+    .contact-section {
         flex-direction: column;
-        padding: 20px;
         text-align: center;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
     }
-
-    .nav-links.active {
-        display: flex;
+    
+    .contact-info h1 {
+        font-size: 2.5rem;
     }
-
-    .nav-cta {
-        display: none; /* Hide button on mobile to save space */
+    
+    .info-item {
+        justify-content: center;
     }
-
-    .hero h1 {
-        font-size: 32px;
+    
+    .contact-form-card {
+        padding: 25px;
     }
+}
+/* Success Message Styling */
+.success-message {
+    display: none; /* Shuru mein hide rahega */
+    text-align: center;
+    padding: 40px;
+    animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
 
-    .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-    .hamburger.active .bar:nth-child(2) { opacity: 0; }
-    .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+.success-message .icon {
+    font-size: 50px;
+    color: #2ecc71;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.success-message h2 {
+    color: var(--heading-color);
+    margin-bottom: 10px;
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }
